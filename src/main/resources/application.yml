@@ -1,0 +1,30 @@
+server:
+  port: 8081
+
+spring:
+  # Security configuration
+  security:
+    user:
+      name: user
+      password: user
+  datasource:
+    url: jdbc:postgresql://localhost:5432/stockdb
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    enabled: false
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    database-change-log-table: stockchangelog
+    database-change-log-lock-table: stockchangeloglock
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: WARN
